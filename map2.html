@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Polygon Example</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+    #map { height: 100vh; width: 100%; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+  // Create the map and set center
+  const map = L.map('map').setView([31.664874, -42.271672], 13); // 
+
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Define polygon coordinates [lat, lng]
+  const polygonCoords = [
+    [29.425291, -44.177854],
+    [31.359409, -35.610980],
+    [33.688354, -45.296951],
+    [35.917925, -51.664222]
+  ];
+
+  // Create and add polygon
+  const polygon = L.polygon(polygonCoords, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5
+  }).addTo(map);
+
+  // Optional: bind popup
+  polygon.bindPopup("This is a polygon.");
+</script>
+
+</body>
+</html>
